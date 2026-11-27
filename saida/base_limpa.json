@@ -1,0 +1,82 @@
+{
+  "processos": [
+    {
+      "processo": "00123451020198260053",
+      "ente_devedor": "Município de São Paulo",
+      "valor_face": "45000.00",
+      "situacao_cadastro": "conciliado",
+      "apresentado_em": "2025-04-02",
+      "prazo_pagamento": "2026-12-31"
+    },
+    {
+      "processo": "00234562120208260053",
+      "ente_devedor": "Município de São Paulo",
+      "situacao_cadastro": "pendente",
+      "apresentado_em": "2025-04-03",
+      "prazo_pagamento": "2027-12-31"
+    },
+    {
+      "processo": "00345673220188260405",
+      "ente_devedor": "Estado de São Paulo",
+      "valor_face": "12500.00",
+      "situacao_cadastro": "conciliado",
+      "apresentado_em": "2024-02-29",
+      "prazo_pagamento": "2025-12-31"
+    },
+    {
+      "processo": "00456784320215020011",
+      "valor_face": "9800.00",
+      "situacao_cadastro": "pendente"
+    }
+  ],
+  "pagamentos": [
+    {
+      "evento_id": "ev-001",
+      "processo": "00123451020198260053",
+      "tipo": "pagamento",
+      "valor": "15500.00",
+      "data_pagamento": "2025-03-10",
+      "atualizado_em": "2025-03-11T12:00:00+00:00"
+    },
+    {
+      "evento_id": "ev-002",
+      "processo": "00123451020198260053",
+      "tipo": "pagamento",
+      "valor": "2500.50",
+      "data_pagamento": "2025-04-10",
+      "atualizado_em": "2025-04-10T12:00:00+00:00"
+    },
+    {
+      "evento_id": "ev-003",
+      "processo": "00234562120208260053",
+      "tipo": "pagamento",
+      "valor": "8000.00",
+      "data_pagamento": "2025-05-02",
+      "atualizado_em": "2025-05-02T14:00:00+00:00"
+    },
+    {
+      "evento_id": "ev-005",
+      "processo": "00234562120208260053",
+      "tipo": "pagamento",
+      "valor": "1200.00",
+      "data_pagamento": "2025-06-01",
+      "atualizado_em": "2025-06-01T13:00:00+00:00"
+    },
+    {
+      "evento_id": "ev-006",
+      "processo": "00345673220188260405",
+      "tipo": "pagamento",
+      "valor": "5000.00",
+      "data_pagamento": "2025-02-20",
+      "atualizado_em": "2025-02-20T13:00:00+00:00"
+    },
+    {
+      "evento_id": "ev-008",
+      "processo": "00456784320215020011",
+      "tipo": "pagamento",
+      "valor": "3000.00",
+      "data_pagamento": "2025-07-15",
+      "atualizado_em": "2025-07-15T13:00:00+00:00"
+    }
+  ]
+}

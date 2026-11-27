@@ -1,0 +1,1145 @@
+{
+  "indicadores": {
+    "registros_lidos": 29,
+    "por_situacao": {
+      "aceito": 0,
+      "corrigido": 13,
+      "descartado": 2,
+      "pendente": 14
+    },
+    "por_arquivo": {
+      "pagamentos.json": {
+        "aceito": 0,
+        "corrigido": 6,
+        "descartado": 2,
+        "pendente": 5
+      },
+      "apresentacoes.json": {
+        "aceito": 0,
+        "corrigido": 3,
+        "descartado": 0,
+        "pendente": 3
+      },
+      "tribunal.csv": {
+        "aceito": 0,
+        "corrigido": 2,
+        "descartado": 0,
+        "pendente": 3
+      },
+      "hub.csv": {
+        "aceito": 0,
+        "corrigido": 2,
+        "descartado": 0,
+        "pendente": 3
+      }
+    },
+    "processos_na_base": 4,
+    "processos_com_cadastro_pendente": 2,
+    "pagamentos_na_base": 6,
+    "cnjs_em_comum": 4,
+    "cnjs_so_no_tribunal": 1,
+    "cnjs_so_no_hub": 1
+  },
+  "leiautes_csv": {
+    "tribunal.csv": {
+      "codificacao_leitura": "cp1252",
+      "delimitador": ";",
+      "posicao_falha_utf8": 72
+    },
+    "hub.csv": {
+      "codificacao_leitura": "utf-8-sig",
+      "delimitador": ",",
+      "posicao_falha_utf8": null
+    }
+  },
+  "hipoteses": [
+    "Pagamento localizado com barras usa dia/mês/ano.",
+    "Atualizado_em elege a versão vigente se todas forem válidas, mantiverem processo, tipo e data, e não houver empate.",
+    "CNJ confirma vínculo se aparecer uma vez em cada cadastro. Campos conflitantes ficam fora da base.",
+    "UTC-03:00 é cenário para apresentações com horário. Esses prazos ficam pendentes.",
+    "Estornos aguardam definição de sinal e vínculo com o pagamento original."
+  ],
+  "registros": [
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 1,
+      "original": {
+        "evento_id": "ev-001",
+        "processo": "0012345-10.2019.8.26.0053",
+        "valor": {
+          "numero_json_decimal": "15000.0"
+        },
+        "data_pagamento": "2025-03-10",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-03-10T10:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-001",
+        "processo": "00123451020198260053",
+        "tipo": "pagamento",
+        "valor": "15000.00",
+        "data_pagamento": "2025-03-10",
+        "atualizado_em": "2025-03-10T13:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0012345-10.2019.8.26.0053",
+          "depois": "00123451020198260053"
+        },
+        "valor": {
+          "campo_origem": "valor",
+          "antes": {
+            "numero_json_decimal": "15000.0"
+          },
+          "depois": "15000.00"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-03-10T10:00:00-03:00",
+          "depois": "2025-03-10T13:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Versão anterior substituída pelo item 9."
+      ],
+      "situacao": "descartado",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 2,
+      "original": {
+        "evento_id": "ev-002",
+        "processo": "0012345-10.2019.8.26.0053",
+        "valor": "2.500,50",
+        "data_pagamento": "10/04/2025",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-04-10T09:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-002",
+        "processo": "00123451020198260053",
+        "tipo": "pagamento",
+        "valor": "2500.50",
+        "data_pagamento": "2025-04-10",
+        "atualizado_em": "2025-04-10T12:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0012345-10.2019.8.26.0053",
+          "depois": "00123451020198260053"
+        },
+        "valor": {
+          "campo_origem": "valor",
+          "antes": "2.500,50",
+          "depois": "2500.50"
+        },
+        "data_pagamento": {
+          "campo_origem": "data_pagamento",
+          "antes": "10/04/2025",
+          "depois": "2025-04-10"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-04-10T09:00:00-03:00",
+          "depois": "2025-04-10T12:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 3,
+      "original": {
+        "evento_id": "ev-003",
+        "processo": "0023456-21.2020.8.26.0053",
+        "valor": 8000,
+        "data_pagamento": "2025-05-02",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-05-02T11:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-003",
+        "processo": "00234562120208260053",
+        "tipo": "pagamento",
+        "valor": "8000.00",
+        "data_pagamento": "2025-05-02",
+        "atualizado_em": "2025-05-02T14:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0023456-21.2020.8.26.0053",
+          "depois": "00234562120208260053"
+        },
+        "valor": {
+          "campo_origem": "valor",
+          "antes": 8000,
+          "depois": "8000.00"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-05-02T11:00:00-03:00",
+          "depois": "2025-05-02T14:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 4,
+      "original": {
+        "evento_id": "ev-002",
+        "processo": "0012345-10.2019.8.26.0053",
+        "valor": "2.500,50",
+        "data_pagamento": "10/04/2025",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-04-10T09:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-002",
+        "processo": "00123451020198260053",
+        "tipo": "pagamento",
+        "valor": "2500.50",
+        "data_pagamento": "2025-04-10",
+        "atualizado_em": "2025-04-10T12:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0012345-10.2019.8.26.0053",
+          "depois": "00123451020198260053"
+        },
+        "valor": {
+          "campo_origem": "valor",
+          "antes": "2.500,50",
+          "depois": "2500.50"
+        },
+        "data_pagamento": {
+          "campo_origem": "data_pagamento",
+          "antes": "10/04/2025",
+          "depois": "2025-04-10"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-04-10T09:00:00-03:00",
+          "depois": "2025-04-10T12:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Duplicata idêntica do item 2."
+      ],
+      "situacao": "descartado",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 5,
+      "original": {
+        "evento_id": "ev-004",
+        "processo": "0023456-21.2020.8.26.0053",
+        "valor": null,
+        "data_pagamento": "2025-05-03",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-05-03T08:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-004",
+        "processo": "00234562120208260053",
+        "tipo": "pagamento",
+        "data_pagamento": "2025-05-03",
+        "atualizado_em": "2025-05-03T11:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0023456-21.2020.8.26.0053",
+          "depois": "00234562120208260053"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-05-03T08:00:00-03:00",
+          "depois": "2025-05-03T11:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "valor: valor ausente ou formato monetário inválido.",
+        "O evento tem versão pendente. A seleção fica em revisão."
+      ],
+      "situacao": "pendente",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 6,
+      "original": {
+        "evento_id": "ev-005",
+        "processo": "00234562120208260053",
+        "valor": {
+          "numero_json_decimal": "1200.0"
+        },
+        "data_pagamento": "2025-06-01",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-06-01T10:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-005",
+        "processo": "00234562120208260053",
+        "tipo": "pagamento",
+        "valor": "1200.00",
+        "data_pagamento": "2025-06-01",
+        "atualizado_em": "2025-06-01T13:00:00+00:00"
+      },
+      "alteracoes": {
+        "valor": {
+          "campo_origem": "valor",
+          "antes": {
+            "numero_json_decimal": "1200.0"
+          },
+          "depois": "1200.00"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-06-01T10:00:00-03:00",
+          "depois": "2025-06-01T13:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 7,
+      "original": {
+        "evento_id": "ev-006",
+        "processo": "0034567-32.2018.8.26.0405",
+        "valor": 5000,
+        "data_pagamento": "2025-02-20",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-02-20T10:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-006",
+        "processo": "00345673220188260405",
+        "tipo": "pagamento",
+        "valor": "5000.00",
+        "data_pagamento": "2025-02-20",
+        "atualizado_em": "2025-02-20T13:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0034567-32.2018.8.26.0405",
+          "depois": "00345673220188260405"
+        },
+        "valor": {
+          "campo_origem": "valor",
+          "antes": 5000,
+          "depois": "5000.00"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-02-20T10:00:00-03:00",
+          "depois": "2025-02-20T13:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 8,
+      "original": {
+        "evento_id": "ev-007",
+        "processo": "0034567-32.2018.8.26.0405",
+        "valor": 5000,
+        "data_pagamento": "2025-02-21",
+        "tipo": "estorno",
+        "atualizado_em": "2025-02-21T10:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-007",
+        "processo": "00345673220188260405",
+        "tipo": "estorno",
+        "valor": "5000.00",
+        "data_pagamento": "2025-02-21",
+        "atualizado_em": "2025-02-21T13:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0034567-32.2018.8.26.0405",
+          "depois": "00345673220188260405"
+        },
+        "valor": {
+          "campo_origem": "valor",
+          "antes": 5000,
+          "depois": "5000.00"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-02-21T10:00:00-03:00",
+          "depois": "2025-02-21T13:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Estorno depende da regra de sinal e da referência ao pagamento original.",
+        "O evento tem versão pendente. A seleção fica em revisão."
+      ],
+      "situacao": "pendente",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 9,
+      "original": {
+        "evento_id": "ev-001",
+        "processo": "0012345-10.2019.8.26.0053",
+        "valor": {
+          "numero_json_decimal": "15500.0"
+        },
+        "data_pagamento": "2025-03-10",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-03-11T09:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-001",
+        "processo": "00123451020198260053",
+        "tipo": "pagamento",
+        "valor": "15500.00",
+        "data_pagamento": "2025-03-10",
+        "atualizado_em": "2025-03-11T12:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0012345-10.2019.8.26.0053",
+          "depois": "00123451020198260053"
+        },
+        "valor": {
+          "campo_origem": "valor",
+          "antes": {
+            "numero_json_decimal": "15500.0"
+          },
+          "depois": "15500.00"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-03-11T09:00:00-03:00",
+          "depois": "2025-03-11T12:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Última versão válida selecionada pela hipótese de atualizado_em.",
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 10,
+      "original": {
+        "evento_id": "ev-008",
+        "processo": "0045678-43.2021.5.02.0011",
+        "valor": 3000,
+        "data_pagamento": "2025-07-15",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-07-15T10:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-008",
+        "processo": "00456784320215020011",
+        "tipo": "pagamento",
+        "valor": "3000.00",
+        "data_pagamento": "2025-07-15",
+        "atualizado_em": "2025-07-15T13:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0045678-43.2021.5.02.0011",
+          "depois": "00456784320215020011"
+        },
+        "valor": {
+          "campo_origem": "valor",
+          "antes": 3000,
+          "depois": "3000.00"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-07-15T10:00:00-03:00",
+          "depois": "2025-07-15T13:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 11,
+      "original": {
+        "evento_id": "ev-009",
+        "processo": "0056789-54.2017.4.03.6100",
+        "valor": -200,
+        "data_pagamento": "2025-07-20",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-07-20T10:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-009",
+        "processo": "00567895420174036100",
+        "tipo": "pagamento",
+        "data_pagamento": "2025-07-20",
+        "atualizado_em": "2025-07-20T13:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0056789-54.2017.4.03.6100",
+          "depois": "00567895420174036100"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-07-20T10:00:00-03:00",
+          "depois": "2025-07-20T13:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Vínculo cadastral sem confirmação nas duas fontes.",
+        "valor: valor negativo, confirmar o significado.",
+        "O evento tem versão pendente. A seleção fica em revisão."
+      ],
+      "situacao": "pendente",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 12,
+      "original": {
+        "evento_id": "ev-010",
+        "processo": "",
+        "valor": 750,
+        "data_pagamento": "2025-08-01",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-08-01T10:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-010",
+        "tipo": "pagamento",
+        "valor": "750.00",
+        "data_pagamento": "2025-08-01",
+        "atualizado_em": "2025-08-01T13:00:00+00:00"
+      },
+      "alteracoes": {
+        "valor": {
+          "campo_origem": "valor",
+          "antes": 750,
+          "depois": "750.00"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-08-01T10:00:00-03:00",
+          "depois": "2025-08-01T13:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Processo ausente ou sem CNJ reconhecível.",
+        "O evento tem versão pendente. A seleção fica em revisão."
+      ],
+      "situacao": "pendente",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "pagamentos.json",
+      "posicao": 13,
+      "original": {
+        "evento_id": "ev-011",
+        "processo": "0067890-65.2016.8.26.0053",
+        "valor": 4000,
+        "data_pagamento": "2025-08-10",
+        "tipo": "pagamento",
+        "atualizado_em": "2025-08-10T10:00:00-03:00"
+      },
+      "normalizado": {
+        "evento_id": "ev-011",
+        "processo": "00678906520168260053",
+        "tipo": "pagamento",
+        "valor": "4000.00",
+        "data_pagamento": "2025-08-10",
+        "atualizado_em": "2025-08-10T13:00:00+00:00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0067890-65.2016.8.26.0053",
+          "depois": "00678906520168260053"
+        },
+        "valor": {
+          "campo_origem": "valor",
+          "antes": 4000,
+          "depois": "4000.00"
+        },
+        "atualizado_em": {
+          "campo_origem": "atualizado_em",
+          "antes": "2025-08-10T10:00:00-03:00",
+          "depois": "2025-08-10T13:00:00+00:00"
+        }
+      },
+      "motivos": [
+        "Vínculo cadastral sem confirmação nas duas fontes.",
+        "O evento tem versão pendente. A seleção fica em revisão."
+      ],
+      "situacao": "pendente",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "apresentacoes.json",
+      "posicao": 1,
+      "original": {
+        "processo": "0012345-10.2019.8.26.0053",
+        "apresentado_em": "2025-04-02"
+      },
+      "normalizado": {
+        "processo": "00123451020198260053",
+        "apresentado_em": "2025-04-02",
+        "prazo_pagamento": "2026-12-31"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0012345-10.2019.8.26.0053",
+          "depois": "00123451020198260053"
+        },
+        "prazo_pagamento": {
+          "campo_origem": "prazo_pagamento",
+          "antes": null,
+          "depois": "2026-12-31"
+        }
+      },
+      "motivos": [
+        "Prazo calculado diverge do registrado no hub.",
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {
+        "prazo_hub": {
+          "linha": 2,
+          "valor": "2027-12-31"
+        }
+      }
+    },
+    {
+      "arquivo": "apresentacoes.json",
+      "posicao": 2,
+      "original": {
+        "processo": "0023456-21.2020.8.26.0053",
+        "apresentado_em": "2025-04-03"
+      },
+      "normalizado": {
+        "processo": "00234562120208260053",
+        "apresentado_em": "2025-04-03",
+        "prazo_pagamento": "2027-12-31"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0023456-21.2020.8.26.0053",
+          "depois": "00234562120208260053"
+        },
+        "prazo_pagamento": {
+          "campo_origem": "prazo_pagamento",
+          "antes": null,
+          "depois": "2027-12-31"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {
+        "prazo_hub": {
+          "linha": 3,
+          "valor": "2027-12-31"
+        }
+      }
+    },
+    {
+      "arquivo": "apresentacoes.json",
+      "posicao": 3,
+      "original": {
+        "processo": "0034567-32.2018.8.26.0405",
+        "apresentado_em": "2024-02-29"
+      },
+      "normalizado": {
+        "processo": "00345673220188260405",
+        "apresentado_em": "2024-02-29",
+        "prazo_pagamento": "2025-12-31"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0034567-32.2018.8.26.0405",
+          "depois": "00345673220188260405"
+        },
+        "prazo_pagamento": {
+          "campo_origem": "prazo_pagamento",
+          "antes": null,
+          "depois": "2025-12-31"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {
+        "prazo_hub": {
+          "linha": 4,
+          "valor": "2025-12-31"
+        }
+      }
+    },
+    {
+      "arquivo": "apresentacoes.json",
+      "posicao": 4,
+      "original": {
+        "processo": "0045678-43.2021.5.02.0011",
+        "apresentado_em": "2025-04-02T23:30:00-03:00"
+      },
+      "normalizado": {
+        "processo": "00456784320215020011",
+        "apresentado_em": "2025-04-02",
+        "prazo_pagamento": "2026-12-31"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0045678-43.2021.5.02.0011",
+          "depois": "00456784320215020011"
+        },
+        "apresentado_em": {
+          "campo_origem": "apresentado_em",
+          "antes": "2025-04-02T23:30:00-03:00",
+          "depois": "2025-04-02"
+        },
+        "prazo_pagamento": {
+          "campo_origem": "prazo_pagamento",
+          "antes": null,
+          "depois": "2026-12-31"
+        }
+      },
+      "motivos": [
+        "Prazo calculado sob hipótese UTC-03:00. Confirmar fuso oficial.",
+        "Dia de apresentação do hub depende do fuso oficial."
+      ],
+      "situacao": "pendente",
+      "comparacao": {
+        "prazo_hub": {
+          "linha": 5,
+          "valor": "2026-12-31"
+        }
+      }
+    },
+    {
+      "arquivo": "apresentacoes.json",
+      "posicao": 5,
+      "original": {
+        "processo": "0056789-54.2017.4.03.6100",
+        "apresentado_em": "2025-04-03T01:00:00Z"
+      },
+      "normalizado": {
+        "processo": "00567895420174036100",
+        "apresentado_em": "2025-04-02",
+        "prazo_pagamento": "2026-12-31"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0056789-54.2017.4.03.6100",
+          "depois": "00567895420174036100"
+        },
+        "apresentado_em": {
+          "campo_origem": "apresentado_em",
+          "antes": "2025-04-03T01:00:00Z",
+          "depois": "2025-04-02"
+        },
+        "prazo_pagamento": {
+          "campo_origem": "prazo_pagamento",
+          "antes": null,
+          "depois": "2026-12-31"
+        }
+      },
+      "motivos": [
+        "Prazo calculado sob hipótese UTC-03:00. Confirmar fuso oficial.",
+        "Prazo calculado diverge do registrado no hub.",
+        "Dia de apresentação do hub depende do fuso oficial.",
+        "Apresentação sem cadastro confirmado nas duas fontes."
+      ],
+      "situacao": "pendente",
+      "comparacao": {
+        "prazo_hub": {
+          "linha": 6,
+          "valor": "2027-12-31"
+        }
+      }
+    },
+    {
+      "arquivo": "apresentacoes.json",
+      "posicao": 6,
+      "original": {
+        "processo": "0067890-65.2016.8.26.0053",
+        "apresentado_em": "2023-12-31"
+      },
+      "normalizado": {
+        "processo": "00678906520168260053",
+        "apresentado_em": "2023-12-31",
+        "prazo_pagamento": "2025-12-31"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0067890-65.2016.8.26.0053",
+          "depois": "00678906520168260053"
+        },
+        "prazo_pagamento": {
+          "campo_origem": "prazo_pagamento",
+          "antes": null,
+          "depois": "2025-12-31"
+        }
+      },
+      "motivos": [
+        "Apresentação sem cadastro confirmado nas duas fontes."
+      ],
+      "situacao": "pendente",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "tribunal.csv",
+      "posicao": 2,
+      "original": {
+        "numero_processo": "0012345-10.2019.8.26.0053",
+        "ente_devedor": "Município de São Paulo",
+        "valor_face": "45.000,00"
+      },
+      "normalizado": {
+        "processo": "00123451020198260053",
+        "ente_devedor": "Município de São Paulo",
+        "valor_face": "45000.00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "numero_processo",
+          "antes": "0012345-10.2019.8.26.0053",
+          "depois": "00123451020198260053"
+        },
+        "valor_face": {
+          "campo_origem": "valor_face",
+          "antes": "45.000,00",
+          "depois": "45000.00"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "tribunal.csv",
+      "posicao": 3,
+      "original": {
+        "numero_processo": "0023456-21.2020.8.26.0053",
+        "ente_devedor": "Município de São Paulo",
+        "valor_face": "30.000,00"
+      },
+      "normalizado": {
+        "processo": "00234562120208260053",
+        "ente_devedor": "Município de São Paulo",
+        "valor_face": "30000.00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "numero_processo",
+          "antes": "0023456-21.2020.8.26.0053",
+          "depois": "00234562120208260053"
+        },
+        "valor_face": {
+          "campo_origem": "valor_face",
+          "antes": "30.000,00",
+          "depois": "30000.00"
+        }
+      },
+      "motivos": [
+        "Campo valor_face divergente ou incompleto entre tribunal e hub."
+      ],
+      "situacao": "pendente",
+      "comparacao": {
+        "valor_face": {
+          "tribunal": "30000.00",
+          "hub": "31000.00"
+        }
+      }
+    },
+    {
+      "arquivo": "tribunal.csv",
+      "posicao": 4,
+      "original": {
+        "numero_processo": "0034567-32.2018.8.26.0405",
+        "ente_devedor": "Estado de São Paulo",
+        "valor_face": "12.500,00"
+      },
+      "normalizado": {
+        "processo": "00345673220188260405",
+        "ente_devedor": "Estado de São Paulo",
+        "valor_face": "12500.00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "numero_processo",
+          "antes": "0034567-32.2018.8.26.0405",
+          "depois": "00345673220188260405"
+        },
+        "valor_face": {
+          "campo_origem": "valor_face",
+          "antes": "12.500,00",
+          "depois": "12500.00"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "tribunal.csv",
+      "posicao": 5,
+      "original": {
+        "numero_processo": "0045678-43.2021.5.02.0011",
+        "ente_devedor": "União",
+        "valor_face": "9.800,00"
+      },
+      "normalizado": {
+        "processo": "00456784320215020011",
+        "ente_devedor": "União",
+        "valor_face": "9800.00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "numero_processo",
+          "antes": "0045678-43.2021.5.02.0011",
+          "depois": "00456784320215020011"
+        },
+        "valor_face": {
+          "campo_origem": "valor_face",
+          "antes": "9.800,00",
+          "depois": "9800.00"
+        }
+      },
+      "motivos": [
+        "Campo ente_devedor divergente ou incompleto entre tribunal e hub."
+      ],
+      "situacao": "pendente",
+      "comparacao": {
+        "ente_devedor": {
+          "tribunal": "União",
+          "hub": "Município de Santos"
+        }
+      }
+    },
+    {
+      "arquivo": "tribunal.csv",
+      "posicao": 6,
+      "original": {
+        "numero_processo": "0067890-65.2016.8.26.0053",
+        "ente_devedor": "Município de São Paulo",
+        "valor_face": "7.000,00"
+      },
+      "normalizado": {
+        "processo": "00678906520168260053",
+        "ente_devedor": "Município de São Paulo",
+        "valor_face": "7000.00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "numero_processo",
+          "antes": "0067890-65.2016.8.26.0053",
+          "depois": "00678906520168260053"
+        },
+        "valor_face": {
+          "campo_origem": "valor_face",
+          "antes": "7.000,00",
+          "depois": "7000.00"
+        }
+      },
+      "motivos": [
+        "Processo presente em apenas uma fonte cadastral."
+      ],
+      "situacao": "pendente",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "hub.csv",
+      "posicao": 2,
+      "original": {
+        "processo": "0012345-10.2019.8.26.0053",
+        "ente": "MUNICIPIO DE SAO PAULO",
+        "valor_face": "45000.00",
+        "apresentado_em": "2025-04-02",
+        "prazo_pagamento": "2027-12-31"
+      },
+      "normalizado": {
+        "processo": "00123451020198260053",
+        "ente_devedor": "MUNICIPIO DE SAO PAULO",
+        "valor_face": "45000.00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0012345-10.2019.8.26.0053",
+          "depois": "00123451020198260053"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "hub.csv",
+      "posicao": 3,
+      "original": {
+        "processo": "00234562120208260053",
+        "ente": "Município de São Paulo",
+        "valor_face": "31000.00",
+        "apresentado_em": "2025-04-03",
+        "prazo_pagamento": "2027-12-31"
+      },
+      "normalizado": {
+        "processo": "00234562120208260053",
+        "ente_devedor": "Município de São Paulo",
+        "valor_face": "31000.00"
+      },
+      "alteracoes": {},
+      "motivos": [
+        "Campo valor_face divergente ou incompleto entre tribunal e hub."
+      ],
+      "situacao": "pendente",
+      "comparacao": {
+        "valor_face": {
+          "tribunal": "30000.00",
+          "hub": "31000.00"
+        }
+      }
+    },
+    {
+      "arquivo": "hub.csv",
+      "posicao": 4,
+      "original": {
+        "processo": "0034567-32.2018.8.26.0405",
+        "ente": "Estado de São Paulo",
+        "valor_face": "12500.00",
+        "apresentado_em": "2024-02-29",
+        "prazo_pagamento": "2025-12-31"
+      },
+      "normalizado": {
+        "processo": "00345673220188260405",
+        "ente_devedor": "Estado de São Paulo",
+        "valor_face": "12500.00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0034567-32.2018.8.26.0405",
+          "depois": "00345673220188260405"
+        }
+      },
+      "motivos": [
+        "Padronização dos campos indicados em alteracoes."
+      ],
+      "situacao": "corrigido",
+      "comparacao": {}
+    },
+    {
+      "arquivo": "hub.csv",
+      "posicao": 5,
+      "original": {
+        "processo": "0045678-43.2021.5.02.0011",
+        "ente": "Município de Santos",
+        "valor_face": "9800.00",
+        "apresentado_em": "2025-04-02T23:30:00-03:00",
+        "prazo_pagamento": "2026-12-31"
+      },
+      "normalizado": {
+        "processo": "00456784320215020011",
+        "ente_devedor": "Município de Santos",
+        "valor_face": "9800.00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0045678-43.2021.5.02.0011",
+          "depois": "00456784320215020011"
+        }
+      },
+      "motivos": [
+        "Campo ente_devedor divergente ou incompleto entre tribunal e hub."
+      ],
+      "situacao": "pendente",
+      "comparacao": {
+        "ente_devedor": {
+          "tribunal": "União",
+          "hub": "Município de Santos"
+        }
+      }
+    },
+    {
+      "arquivo": "hub.csv",
+      "posicao": 6,
+      "original": {
+        "processo": "0056789-54.2017.4.03.6100",
+        "ente": "Estado de São Paulo",
+        "valor_face": "22000.00",
+        "apresentado_em": "2025-04-03T01:00:00Z",
+        "prazo_pagamento": "2027-12-31"
+      },
+      "normalizado": {
+        "processo": "00567895420174036100",
+        "ente_devedor": "Estado de São Paulo",
+        "valor_face": "22000.00"
+      },
+      "alteracoes": {
+        "processo": {
+          "campo_origem": "processo",
+          "antes": "0056789-54.2017.4.03.6100",
+          "depois": "00567895420174036100"
+        }
+      },
+      "motivos": [
+        "Processo presente em apenas uma fonte cadastral."
+      ],
+      "situacao": "pendente",
+      "comparacao": {}
+    }
+  ]
+}
